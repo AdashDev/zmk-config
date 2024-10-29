@@ -52,6 +52,23 @@
             bindings = <&kp BSPC>, <&kp BSPC>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+    combo_cmd_shift_s {
+        timeout-ms = <50>;
+        key-positions = <13 41>;    // S key + right thumb key (backspace)
+        bindings = <&kp LG(LS(S))>;
+    };
+
+    combo_cmd_shift_left {
+        timeout-ms = <50>;
+        key-positions = <30 41>;    // N key + backspace
+        bindings = <&kp LG(LS(LEFT))>;
+    };
+
+    combo_cmd_shift_right {
+        timeout-ms = <50>;
+        key-positions = <31 41>;    // M key + backspace
+        bindings = <&kp LG(LS(RIGHT))>;
+    };
     };
 
     keymap {
@@ -69,7 +86,7 @@
         lower_layer {
             bindings = <
                 &kp TAB     &kp N1   &kp N2   &kp N3    &kp N4    &kp N5         &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp BSPC
-                &kp LCTRL   &trans   &trans   &trans    &trans &trans         &kp RIGHT    &kp DOWN    &kp UP    &kp LEFT    &trans    &trans
+                &kp LCTRL   &trans   &trans   &trans    &trans &trans         &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT    &trans    &trans
                 &kp LSHFT   &trans   &trans   &trans    &trans    &trans         &trans    &trans    &trans    &trans    &trans    &trans
                                     &kp LGUI  &mo 3     &kp SPACE               &kp RET   &trans    &kp RALT
             >;
