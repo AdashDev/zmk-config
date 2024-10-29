@@ -4,6 +4,47 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+        combo_cmd_shift_s {
+            timeout-ms = <50>;
+            key-positions = <13 41>;    // S key + right thumb key (backspace)
+            bindings = <&kp LG(LS(S))>;
+        };
+    };
+
+    behaviors {
+        bhm: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BALANCED_HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+
+        lhm: layer_hold_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_HOLD_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+
+        bspc_layer: backspace_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BACKSPACE_LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -12,7 +53,7 @@
                 &kp LCTRL   &kp Q    &kp W    &kp E     &kp R     &kp T          &kp Y     &kp U     &kp I     &kp O     &kp P     &kp RCTRL
                 &kp TAB     &kp A    &kp S    &kp D     &kp F     &kp G          &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
                 &kp LSHFT   &kp Z    &kp X    &kp C     &kp V     &kp B          &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-                                    &kp LALT  &lt 1 ESC  &mt LGUI SPACE          &mt RGUI RET  &lt 2 BSPC  &kp RALT
+                                    &kp LALT  &lhm 1 ESC  &bhm LGUI SPACE        &bhm RGUI RET  &bspc_layer BSPC BSPC  &kp RALT
             >;
         };
 
@@ -36,8 +77,8 @@
 
         adjust_layer {
             bindings = <
-                &sys_reset  &kp C_VOL_DN &kp C_VOL_UP &rgb_ug RGB_TOG &kp C_PREV &kp C_NEXT    &trans    &trans    &trans    &trans    &kp LG(LS(N4)) &trans
-                &trans      &trans       &trans       &trans         &trans     &trans         &trans    &trans    &trans    &trans    &trans    &trans
+                &sys_reset  &trans       &trans &kp C_VOL_DN &kp C_VOL_UP       &trans    &trans    &trans    &trans    &trans    &kp LG(LS(N4)) &trans
+                &trans      &trans       &kp C_PREV       &kp C_NEXT        &kp C_FAST_FORWARD     &trans         &trans    &trans    &trans    &trans    &trans    &trans
                 &trans      &trans       &trans       &trans         &trans     &trans         &trans    &trans    &trans    &trans    &trans    &trans
                                         &kp LGUI      &trans         &kp SPACE               &kp RET   &trans    &kp RALT
             >;
