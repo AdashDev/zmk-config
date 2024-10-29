@@ -33,16 +33,6 @@
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
         };
-
-        bspc_layer: backspace_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "BACKSPACE_LAYER";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
     };
 
     keymap {
@@ -53,7 +43,7 @@
                 &kp LCTRL   &kp Q    &kp W    &kp E     &kp R     &kp T          &kp Y     &kp U     &kp I     &kp O     &kp P     &kp RCTRL
                 &kp TAB     &kp A    &kp S    &kp D     &kp F     &kp G          &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
                 &kp LSHFT   &kp Z    &kp X    &kp C     &kp V     &kp B          &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-                                    &kp LALT  &lhm 1 ESC  &bhm LGUI SPACE        &bhm RGUI RET  &bspc_layer BSPC BSPC  &kp RALT
+                                    &kp LALT  &lhm 1 ESC  &bhm LGUI SPACE        &bhm RGUI RET  &lt 2 BSPC  &kp RALT
             >;
         };
 
