@@ -1,0 +1,21 @@
+# Custom Kconfig for cat display animation
+
+if ZMK_DISPLAY
+
+config ZMK_WIDGET_CAT_DISPLAY
+    bool "Enable cat animation display widget"
+    default y
+    help
+      Enable the custom cat animation widget for OLED displays.
+      This adds a cute animated cat to your keyboard display.
+
+config ZMK_CAT_ANIMATION_SPEED
+    int "Cat animation frame duration in milliseconds"
+    default 1000
+    range 100 5000
+    depends on ZMK_WIDGET_CAT_DISPLAY
+    help
+      Control how fast the cat animation cycles between frames.
+      Lower values = faster animation, higher values = slower animation.
+
+endif # ZMK_DISPLAY
